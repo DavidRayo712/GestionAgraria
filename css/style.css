@@ -1,0 +1,385 @@
+* {
+  margin: 0px;
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  background-color: rgb(5, 89, 91);
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  padding: 10px;
+  height: auto;
+}
+
+.tarjetas {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h2 {
+  background-color: rgba(97, 65, 36,0.5);
+  color: rgb(229, 227, 201);
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0px 5px 8px rgba(97, 65, 36, 0.8);
+}
+
+#titulo-gestion{
+  background-color: black;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
+  max-height: 100px;
+  margin-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+  font-size: 14px;
+  display: block;
+  margin: 20px;
+}
+
+footer img {
+  width: 70px;
+}
+
+body {
+  background-color: rgb(229, 227, 201);
+}
+
+/* barra de navegacion */
+nav {
+  /* background-color: rgb(229, 227, 201) !important; */
+  background-color: rgb(207, 188, 155);
+  height: 60px;
+  font-size: 22px;
+  text-align: center;
+  border-bottom: 2px rgb(97, 65, 36) solid;
+}
+
+.navcontainer {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.logo {
+  float: left;
+}
+
+
+ul {
+  padding: 20px;
+}
+
+li {
+  display: inline-block;
+  list-style-type: none;
+}
+
+li a {
+  text-decoration: none;
+  color: rgb(97, 65, 36);
+  font-weight: 800;
+  padding: 20px;
+}
+
+/* logo */
+#olivo {
+  height: 50px;
+}
+
+
+/* vista agregar-buscar */
+.container2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 60%;
+  height:50vh;
+  margin: 0 auto;
+}
+
+.container3{
+  display: grid;
+  grid-template-columns:1fr;
+  grid-template-rows:1fr 1fr;
+  width: 60%;
+  height:50vh;
+  margin: 0 auto;
+}
+
+.container-card-add {
+  background-color: gainsboro;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px black;
+  min-height: 100px;
+  width: 200px;
+  height: 120px;
+  margin:0 auto;
+}
+
+.container-card-add img{
+  margin: 10px auto;
+}
+
+.container-card-find {
+  background-color: gainsboro;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px black;
+  height: 120px;
+  width: 300px;
+  margin:0 auto;
+}
+
+.container-agregar{
+  width: 400px;
+  margin-top: 40px;
+}
+
+
+.container-add-abono{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 6fr;
+  width: 70%;margin:20px auto;
+}
+
+.select #Proveedor{
+  width: 100%;
+  height:100%;
+}
+
+
+.find-form {
+  width: 300px;
+  margin: 40px auto;
+}
+
+
+.aceptar, .agregar {
+  width: 60%;
+  margin: 20px auto;
+}
+
+.aceptar button {
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  background-color: rgb(5, 89, 91);
+  border-color: rgb(5, 89, 91);
+  border-radius: 5px;
+}
+
+.agregar button {
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  background-color: rgb(21, 5, 91);
+  border-color: rgb(21, 5, 91);
+  border-radius: 5px;
+}
+
+.grabar button {
+  display: block;
+  width: 100px;
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  background-color: rgb(5, 89, 91);
+  border-color: rgb(5, 89, 91);
+  border-radius: 5px;
+}
+
+
+
+/* grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.grid-producto {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 20px;
+
+  width: 80%;
+  margin: 0 auto;
+}
+
+.container-producto {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.container-form-abono {
+  width: 40%;
+  margin: 0 auto;
+
+  background-color: gainsboro;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px black;
+}
+
+/* formulario para agregar producto abono */
+#form-abono {
+  width: 70%;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: 3fr 7fr 2fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  row-gap: 20px;
+}
+
+#logo-impuestos{
+  margin:20px auto 0px;
+}
+
+.text-start {
+  min-height: 30px;
+  line-height: 30px;
+  text-align: left;
+  padding-left: 30px;
+}
+
+.text-end {
+  text-align: right;
+  padding-right: 20px;
+  min-height: 30px;
+  line-height: 30px;
+}
+
+.form-control {
+  background-color: white !important;
+  text-align: right;
+  font-size: 18px;
+  width: 95%;
+  min-height: 30px;
+}
+
+
+.form-label {
+  color: rgb(5, 89, 91);
+  font-weight: 700;
+  min-height: 30px;
+  font-size: 20px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1e6a39 !important;
+  border-color: #1e6a39 !important;
+  font-size: 30px;
+}
+
+.title-action {
+  font-size: 20px;
+  color: black;
+  font-weight: bolder;
+  text-align: center;
+  padding: 20px;
+}
+
+.subtitle-find {
+  color: rgb(5, 89, 91) !important;
+  font-size: 20px;
+  font-weight: bolder;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.label-from-to {
+  font-size: 20px;
+}
+
+.font-weight-bold {
+  font-weight: 700;
+}
+
+.column-abono {
+  font-weight: 700;
+  background-color: #dde8ca !important;
+  color: #346a3e;
+}
+
+.table-abono > :not(caption) > * > * {
+  padding: initial !important;
+}
+
+.table-abono > tbody > tr {
+  padding: initial !important;
+  background-color: #dee6ef !important;
+  border-bottom-width: 1px;
+  box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
+}
+
+.table-abono > tbody > tr:nth-of-type(odd) > * {
+  --bs-table-accent-bg: #dedce6 !important;
+  color: #346a3e !important;
+}
+
+.table-abono th {
+  border: 6px solid white;
+}
+
+.table-abono td {
+  border: 6px solid white;
+}
+
+.uno {
+  background-color: rgb(242, 241, 233);
+  max-height: 200px;
+  color: black;
+  margin: 40px;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px rgb(193, 192, 170);
+}
+
+.uno img {
+  padding-top: 10px;
+}
+
+.uno:hover {
+  background-color: white;
+}
+
+.marked {
+  color: bisque;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .nav .nav-item .nav-link {
+    color: #fff;
+    font-size: 16px;
+    margin-left: 5px;
+    text-align: center;
+  }
+
+  .uno {
+    max-height: 100px;
+    min-width: 150px;
+    max-width: 200px;
+    color: black;
+    margin: 20px;
+    border-radius: 5px;
+  }
+}
