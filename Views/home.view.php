@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <!-- link CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-
 </head>
 
 <body>
