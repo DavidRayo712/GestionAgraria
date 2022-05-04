@@ -45,34 +45,40 @@
 
     <?php
     if (isset($_GET['action'])) {
-        if (#vista principales
-            ($_GET['action'] == "abono") ||
-            ($_GET['action'] == "fitosanitario") ||
-            ($_GET['action'] == "combustible") ||
-            ($_GET['action'] == "electricidad") ||
-            ($_GET['action'] == "mantenimiento") ||
-            ($_GET['action'] == "impuestos") ||
-            #agregar gastos
-            ($_GET['action'] == "add.abono") ||
-            ($_GET['action'] == "add.fitosanitario") ||
-            ($_GET['action'] == "add.combustible") ||
-            ($_GET['action'] == "add.electricidad") ||
-            ($_GET['action'] == "add.mantenimiento") ||
-            #buscar gastos
-            ($_GET['action'] == "find.abono") ||
-            ($_GET['action'] == "find.fitosanitario") ||
-            ($_GET['action'] == "find.combustible") ||
-            ($_GET['action'] == "find.electricidad") ||
-            ($_GET['action'] == "find.mantenimiento")
-        ) {
-            #página de inicio
-            require_once("Views/".$_GET['action'].".view.php");
-        } else {
-            #página de inicio
-            require_once('Views/selection.view.php');
+        switch ($_GET['action']) {
+                #vista principales
+            case 'abono':
+            case 'fitosanitario':
+            case 'combustible':
+            case 'electricidad':
+            case 'mantenimiento':
+            case 'impuestos':
+                #agregar gastos
+            case 'add.abono':
+            case 'add.fitosanitario':
+            case 'add.combustible':
+            case 'add.electricidad':
+            case 'add.mantenimiento':
+                #buscar gastos
+            case 'find.abono':
+            case 'find.fitosanitario':
+            case 'find.combustible':
+            case 'find.electricidad':
+            case 'find.mantenimiento':
+                require_once("Views/" . $_GET['action'] . ".view.php");
+                break;
+            case 'register.abono':
+                require_once('Controller/abono.add.controller.php');
+                require_once('Views/selection.view.php');
+
+                break;
+
+            default:
+                require_once('Views/selection.view.php');
+                break;
         }
     } else {
-         #página de inicio
+        #página de inicio
         require_once('Views/selection.view.php');
     }
 

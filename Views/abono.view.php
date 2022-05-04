@@ -19,7 +19,7 @@
     </div>
 
     <div class="find-form">
-        <form method="post" action="index.php">
+        <form method="post" action="index.php?action=find.abono">
             <div class="title-action">
                 BUSCAR
             </div>

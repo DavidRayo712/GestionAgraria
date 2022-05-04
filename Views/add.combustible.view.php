@@ -88,9 +88,9 @@
 </div>
 <?php
 echo ("<script>" .
-    "window.onload = function() {" .
-    "init();" .
-    "};" .
+    "window.onload = function(){" .
+    "init()" .
+    "}" .
     "</script>"
 );
 ?>

@@ -1,3 +1,7 @@
+<?php
+    require_once('Controller/abono.add.controller.php');
+?>
+
 <h2>Agregar Abono</h2>
 
 <div class="container-add-abono">
@@ -8,7 +12,7 @@
 
     <!-- FORMULARIO -->
     <div>
-        <form id="form-abono" method="post" action="../index.php">
+        <form id="form-abono" method="post" action="index.php?action=register.abono">
 
             <!-- FECHA -->
             <div class="text-end">
@@ -88,9 +92,9 @@
 </div>
 <?php
 echo ("<script>" .
-    "window.onload = function() {" .
-    "init();" .
-    "};" .
+    "window.onload = function(){" .
+    "init()" .
+    "}" .
     "</script>"
 );
 ?>
