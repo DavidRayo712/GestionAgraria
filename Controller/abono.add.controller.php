@@ -13,7 +13,7 @@
     if(isset($_GET['action']) && $_GET['action'] == 'add.abono'){
         $proveedores = $abono->getProveedores();
     }
-    if(isset($_POST['from'])){
+    if(isset($_GET['action']) && $_GET['action'] == 'find.abono'){
         $gridAbono = $abono->getGridAbono( $_POST['from'],  $_POST['to']);
     }
 ?>
