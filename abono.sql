@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2022 a las 04:31:51
--- Versión del servidor: 10.1.36-MariaDB
--- Versión de PHP: 7.2.10
+-- Tiempo de generación: 05-05-2022 a las 21:14:31
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -45,7 +44,8 @@ CREATE TABLE `abonos` (
 INSERT INTO `abonos` (`id`, `proveedor`, `producto`, `cantidad`, `precio`, `date`, `iva`) VALUES
 (22, 1, 'Nitrofoska', 2500, 2430.75, '2022-04-01', 0),
 (23, 2, 'Nitrofoska', 3000, 3100.15, '2022-04-02', 0),
-(24, 2, 'Abono 15-15-15', 9600, 12500.45, '2022-04-03', 0);
+(24, 2, 'Abono 15-15-15', 9600, 12500.45, '2022-04-03', 0),
+(25, 1, '47', 1, 0.02, '2022-05-06', 1);
 
 -- --------------------------------------------------------
 
@@ -134,6 +134,14 @@ CREATE TABLE `iva` (
   `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `iva`
+--
+
+INSERT INTO `iva` (`id`, `value`, `name`) VALUES
+(1, 10, 'basico'),
+(2, 21, 'otro');
+
 -- --------------------------------------------------------
 
 --
@@ -192,8 +200,16 @@ CREATE TABLE `user` (
   `email` varchar(100) NOT NULL,
   `name` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
-  `type` int(11) NOT NULL
+  `type` int(11) NOT NULL,
+  `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `name`, `lastname`, `type`, `password`) VALUES
+(1, 'jmanriquedaboin@gmail.com', 'Jose', 'Manrrique', 1, '123456');
 
 --
 -- Índices para tablas volcadas
@@ -257,7 +273,8 @@ ALTER TABLE `proveedores`
 -- Indices de la tabla `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `emailunique` (`email`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -267,7 +284,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `abonos`
 --
 ALTER TABLE `abonos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `combustibles`
@@ -297,7 +314,7 @@ ALTER TABLE `fitosanitarios`
 -- AUTO_INCREMENT de la tabla `iva`
 --
 ALTER TABLE `iva`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `mantenimiento`
@@ -321,7 +338,7 @@ ALTER TABLE `proveedores`
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
