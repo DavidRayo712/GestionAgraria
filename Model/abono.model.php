@@ -61,6 +61,9 @@ class Abono{
         }
         
     }
+    public  function delete($id){
+            $text  = "DELETE FROM abonos WHERE  id = ". $id;
+            $query = $this->con->query($text);
+        
+    }
 }
-
-?>

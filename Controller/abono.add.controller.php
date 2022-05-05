@@ -23,6 +23,9 @@
             $_POST['ivatype'],
         );
     }
+    if(isset($_GET['action']) && $_GET['action'] == 'delete.abono'){
+        $abono->delete( $_POST['idabono'] );
+    }
     if(isset($_GET['action']) && ($_GET['action'] == 'add.abono' || $_GET['action'] == 'edit.abono')){
         $proveedores = $abono->getProveedores();
         $ivaTypes = $iva->getIvaType();
@@ -37,4 +40,3 @@
     if(isset($_GET['action']) && $_GET['action'] == 'find.abono'){
         $gridAbono = $abono->getGridAbono( $_POST['from'],  $_POST['to']);
     }
-?>

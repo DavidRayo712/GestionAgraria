@@ -100,6 +100,14 @@
                 case 'edit.electricidad':
                 case 'edit.mantenimiento':
                     require_once("Views/add." . str_replace('edit.', "", $_GET['action']) . ".view.php");
+                    #borrar gastos
+                case 'delete.abono':
+                case 'delete.fitosanitario':
+                case 'delete.combustible':
+                case 'delete.electricidad':
+                case 'edeletedit.mantenimiento':
+                    require_once('Controller/abono.add.controller.php');
+                    require_once('Views/selection.view.php');
                     break;
                 case 'register.abono':
                     require_once('Controller/abono.add.controller.php');
