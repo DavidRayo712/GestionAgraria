@@ -107,12 +107,15 @@
                 case 'delete.electricidad':
                 case 'delete.mantenimiento':
                     require_once('Controller/abono.add.controller.php');
+                    require_once('Controller/fitosanitario.add.controller.php');
                     require_once('Controller/combustible.add.controller.php');
                     require_once('Views/selection.view.php');
                     break;
                 case 'register.abono':
                 case 'register.combustible':
+                case 'register.fitosanitario':
                     require_once('Controller/abono.add.controller.php');
+                    require_once('Controller/fitosanitario.add.controller.php');
                     require_once('Controller/combustible.add.controller.php');
                     require_once('Views/selection.view.php');
                     break;
