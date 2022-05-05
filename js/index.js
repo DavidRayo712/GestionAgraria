@@ -12,6 +12,24 @@ function init() {
     }, true);
 }
 function calculate(Cantidad, Precio, Importe) {
-    debugger
     Importe.value = Number(Precio.value * Cantidad.value);
+}
+function validSession() {
+    const navMenus = document.getElementById("nav-menus");
+    const navSesion = document.getElementById("nav-sesion");
+    const bodyFunctions = document.getElementById("body-functions");
+    const bodySession = document.getElementById("body-session");
+    const SessionID = localStorage.getItem('idUsert')
+    if(SessionID){
+        navMenus.classList.remove("d-none");
+        bodyFunctions.classList.remove("d-none");
+    }
+    else{
+        bodySession.classList.remove("d-none");
+        navSesion.classList.remove("d-none");
+    }
+}
+function closeSession() {
+    localStorage.removeItem('typeUsert');
+    localStorage.removeItem('idUsert');
 }
