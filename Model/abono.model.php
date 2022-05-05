@@ -35,14 +35,15 @@ class Abono{
         }
         return $retorno;
     }
-    public  function register($Proveedor, $producto, $Cantidad, $Precio, $date ){
+    public  function register($Proveedor, $producto, $Cantidad, $Precio, $date, $ivatype ){
         $datetime = new DateTime($date);
         
-        $text  = "INSERT INTO abonos(proveedor, producto, cantidad, precio, date) VALUES (".
+        $text  = "INSERT INTO abonos(proveedor, producto, cantidad, precio, iva, date) VALUES (".
         $Proveedor .", ".
         "'". $producto ."', ".
         $Cantidad .", ".
         $Precio .", ".
+        $ivatype .", ".
         "'". $datetime->format(DateTime::ATOM) ."')";        
         $query = $this->con->query($text);
     }

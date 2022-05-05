@@ -1,5 +1,5 @@
 <?php
-    require_once('Controller/abono.add.controller.php');
+require_once('Controller/abono.add.controller.php');
 ?>
 
 <h2>Agregar Abono</h2>
@@ -71,10 +71,12 @@
                 <label for="IVA" class="form-label">IVA</label>
             </div>
             <div>
-                <input type="radio" id="iva2" name="age" value="0.1">
-                <label for="age2">10 %</label>
-                <input type="radio" id="iva3" name="age" value="0.21" checked>
-                <label for="age3">21 %</label>
+                <?php
+                foreach ($ivaTypes as $iva) {
+                    echo ' <input type="radio" id="radioiva'. $iva['id'].'" name="ivatype" value="'.$iva['id'].'">';
+                    echo ' <label for="">'.$iva['value'].' %</label>';
+                }
+                ?>
             </div>
             <div></div>
 
