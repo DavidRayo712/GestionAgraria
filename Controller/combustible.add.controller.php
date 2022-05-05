@@ -28,6 +28,7 @@
     }
     if(isset($_GET['action']) && ($_GET['action'] == 'add.combustible' || $_GET['action'] == 'edit.combustible')){
         $proveedores = $combustible->getProveedores();
+        $productos = $combustible->getProductos();
         $ivaTypes = $iva->getIvaType();
         $dataForm["date"] = isset($_POST['date']) ? $_POST['date'] : '';
         $dataForm["id"] = isset($_POST['id']) ? $_POST['id'] : '0';

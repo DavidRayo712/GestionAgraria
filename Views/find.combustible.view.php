@@ -35,7 +35,7 @@ require_once('Controller/combustible.add.controller.php');
         echo '<tr>';
         echo '<td>' . $combustible['date'] . '</td>';
         echo '<td>' . $combustible['proveedor'] . '</td>';
-        echo '<td>' . $combustible['producto'] . '</td>';
+        echo '<td>' . $combustible['productname'] . '</td>';
         echo '<td>' . $combustible['cantidad'] . ' Kg</td>';
         echo '<td>' . $combustible['precio'] . ' €</td>';
         echo '<td class="functions-admin d-none">';

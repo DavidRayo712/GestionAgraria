@@ -51,9 +51,20 @@ require_once('Controller/combustible.add.controller.php');
                 <label for="producto" class="form-label">Producto</label>
             </div>
             <div class="">
-                <?php
-                echo '<input value="' . $dataForm["producto"] . '" class="form-control text-end" id="producto" name="producto" placeholder="Introduce el producto">';
-                ?>
+                <select class="form-control text-end" id="producto" name="producto">
+                    <option>Seleccione un producto</option>
+                    <?php
+                    foreach ($productos as $producto) {
+                        if ($dataForm['producto'] && $dataForm['producto'] == $producto['id']) {
+                            echo '<option selected value="' . $producto['id'] . '">' . $producto['name'] . '</option>';
+                        } else {
+                            echo '<option value="' . $producto['id'] . '">' . $producto['name'] . '</option>';
+                        }
+                    }
+
+                    // echo '<input value="' . $dataForm["producto"] . '" class="form-control text-end" id="producto" name="producto" placeholder="Introduce el producto">';
+                    ?>
+                </select>
             </div>
             <div class=""></div>
 
@@ -84,7 +95,7 @@ require_once('Controller/combustible.add.controller.php');
                 <label for="IVA" class="form-label">IVA</label>
             </div>
             <div>
-                 <!-- 
+                <!-- 
         echo '<input type="hidden" name="iva" value="'.$abono['iva'].'">';  -->
                 <?php
                 foreach ($ivaTypes as $iva) {
