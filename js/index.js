@@ -14,7 +14,7 @@ function init() {
 function calculate(Cantidad, Precio, Importe) {
     Importe.value = Number(Precio.value * Cantidad.value);
 }
-function validSession() {
+function validSession() {debugger
     const navMenus = document.getElementById("nav-menus");
     const navSesion = document.getElementById("nav-sesion");
     const bodyFunctions = document.getElementById("body-functions");

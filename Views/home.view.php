@@ -93,12 +93,18 @@
                 case 'find.mantenimiento':
                     require_once("Views/" . $_GET['action'] . ".view.php");
                     break;
+                    #editar gastos
+                case 'edit.abono':
+                case 'edit.fitosanitario':
+                case 'edit.combustible':
+                case 'edit.electricidad':
+                case 'edit.mantenimiento':
+                    require_once("Views/add." . str_replace('edit.', "", $_GET['action']) . ".view.php");
+                    break;
                 case 'register.abono':
                     require_once('Controller/abono.add.controller.php');
                     require_once('Views/selection.view.php');
-
                     break;
-
                 default:
                     require_once('Views/selection.view.php');
                     break;
