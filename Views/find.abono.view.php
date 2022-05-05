@@ -21,10 +21,10 @@ require_once('Controller/abono.add.controller.php');
         <th scope="col">
           <div class="column-abono">Precio</div>
         </th>
-        <th scope="col" class="functions-admin">
+        <th scope="col" class="functions-admin d-none">
           <div class="column-abono"></div>
         </th>
-        <th scope="col" class="functions-admin">
+        <th scope="col" class="functions-admin d-none">
           <div class="column-abono"></div>
         </th>
       </tr>
@@ -38,7 +38,7 @@ require_once('Controller/abono.add.controller.php');
         echo '<td>' . $abono['producto'] . '</td>';
         echo '<td>' . $abono['cantidad'] . ' Kg</td>';
         echo '<td>' . $abono['precio'] . ' €</td>';
-        echo '<td class="functions-admin">';
+        echo '<td class="functions-admin d-none">';
         echo '<form method="post" action="index.php?action=edit.abono">';
         echo '<input type="hidden" name="id" value="' . $abono['id'] . '">';
         echo '<input type="hidden" name="date" value="' . $abono['date'] . '">';
@@ -50,7 +50,7 @@ require_once('Controller/abono.add.controller.php');
         echo '<button type="submit">Editar</button>';
         echo '</form>';
         echo '</td>';
-        echo '<td class="functions-admin">';
+        echo '<td class="functions-admin d-none">';
         echo '<form method="post" action="index.php?action=delete.abono">';
         echo '<input type="hidden" name="idabono" value="' . $abono['id'] . '">';
         echo '<button type="submit">Borrar</button>';
@@ -59,6 +59,7 @@ require_once('Controller/abono.add.controller.php');
 
         echo '</tr>';
       }
+      echo ("<script> validTypeUser(); </script>" );
       ?>
     </tbody>
   </table>

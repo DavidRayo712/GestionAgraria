@@ -29,6 +29,16 @@ function validSession() {debugger
         navSesion.classList.remove("d-none");
     }
 }
+function validTypeUser() {
+    const typeUsert = localStorage.getItem('typeUsert');
+    const elements = document.getElementsByClassName("functions-admin");
+    if (typeUsert === "1") {
+        for (let index = 0; index < elements.length; index++) {
+            elements[index].classList.remove("d-none");
+        }
+    }
+
+}
 function closeSession() {
     localStorage.removeItem('typeUsert');
     localStorage.removeItem('idUsert');
