@@ -5,7 +5,7 @@
         <img src="./img/tasas.png" alt="logo" id="logo-impuestos">
     </div>
     <div class="find-form">
-        <form method="post" action="index.php">
+        <form method="post" action="index.php?action=find.impuestos">
 
             <div class="container-card-find">
                 <div class="subtitle-find">

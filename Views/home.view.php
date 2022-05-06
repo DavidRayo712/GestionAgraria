@@ -91,6 +91,7 @@
                 case 'find.combustible':
                 case 'find.electricidad':
                 case 'find.mantenimiento':
+                case 'find.impuestos':
                     require_once("Views/" . $_GET['action'] . ".view.php");
                     break;
                     #editar gastos
