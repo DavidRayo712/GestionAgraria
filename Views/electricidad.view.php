@@ -1,3 +1,6 @@
+<?php
+require_once('Controller/electricidad.add.controller.php');
+?>
 <h2>Electricidad</h2>
 <div class="container2">
     <div class="container-agregar">
@@ -12,14 +15,14 @@
         </div>
 
         <div class="agregar">
-            <a href="index.php?add_electricidad=true">
+            <a href="index.php?action=add.electricidad">
                 <button type="submit">Agregar</button>
             </a>
         </div>
     </div>
 
     <div class="find-form">
-        <form method="post" action="index.php">
+        <form method="post" action="index.php?action=find.electricidad">
             <div class="title-action">
                 BUSCAR
             </div>

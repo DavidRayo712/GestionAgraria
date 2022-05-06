@@ -3,17 +3,18 @@ require_once('conexion.php');
 
 class Electricidad{
     private $con ;
+
     public function __construct()
     {
         $conAux = new Conexion();
         $this->con = $conAux->get_con();
     }
     
-    public function getGridElectricidad($from, $to){
+    public function getGriElectricidad($from, $to){
         $fromDate = new DateTime($from);
         $toDate = new DateTime($to);
         
-        $query = $this->con->query('SELECT elect.date, pr.name as proveedor, elect.lugar, elect.precio FROM electricidad elect inner join proveedores pr on elect.proveedor = pr.id WHERE elect.date BETWEEN '.
+        $query = $this->con->query('SELECT ab.id, ab.date,pr.id as idproveedor, pr.name as proveedor, ab.contador, con.name as contadorname, ab.precio, ab.iva FROM electricidad ab inner join proveedores pr on ab.proveedor = pr.id INNER JOIN contador con on ab.contador = con.id WHERE ab.date BETWEEN '.
         "'". $fromDate->format(DateTime::ATOM)."' AND ".
         "'". $toDate->format(DateTime::ATOM)."'");
         $retorno = [];
@@ -34,16 +35,43 @@ class Electricidad{
         }
         return $retorno;
     }
-    public function register($Proveedor, $lugar, $Precio, $date ){
+    public function getContador(){
+        $query = $this->con->query('SELECT id, name FROM contador');
+        $retorno = [];
+        $i = 0;
+        while($fila = $query->fetch_assoc()){
+            $retorno[$i] = $fila;
+            $i++;
+        }
+        return $retorno;
+    }
+    public  function register($id, $Proveedor, $contador, $Precio, $date, $ivatype ){
+
         $datetime = new DateTime($date);
+        if ($id == 0) {
+            $text  = "INSERT INTO electricidad(proveedor, contador, precio, iva, date) VALUES (".
+            $Proveedor .", ".
+            "'". $contador ."', ".
+            $Precio .", ".
+            $ivatype .", ".
+            "'". $datetime->format(DateTime::ATOM) ."')";        
+            $query = $this->con->query($text);
+        } else {
+            $text  = "UPDATE electricidad SET ".
+            ' proveedor = '.  $Proveedor.", ".
+            " contador = '". $contador ."', ".
+            ' precio = '.  $Precio.", ".
+            " date = '". $datetime->format(DateTime::ATOM) ."', ".
+            ' iva = '.  $ivatype.
+            ' WHERE '.
+            'id = '. $id;
+            $query = $this->con->query($text);
+        }
         
-        $text  = "INSERT INTO electricidad(proveedor, lugar, precio, date) VALUES (".
-        $Proveedor .", ".
-        "'". $lugar .", ".
-        $Precio .", ".
-        "'". $datetime->format(DateTime::ATOM) ."')";        
-        $query = $this->con->query($text);
+    }
+    public  function delete($id){//revisar
+            $text  = "DELETE FROM electricidad WHERE  id = ". $id;
+            $query = $this->con->query($text);
+        
     }
 }
-
-?>

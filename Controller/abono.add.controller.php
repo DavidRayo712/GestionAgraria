@@ -20,7 +20,7 @@
             $_POST['Cantidad'],
             $_POST['Precio'],
             $_POST['date'],
-            $_POST['ivatype'],
+            $_POST['ivatype']
         );
     }
     if(isset($_GET['action']) && $_GET['action'] == 'delete.abono'){
