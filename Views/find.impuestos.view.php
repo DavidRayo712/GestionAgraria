@@ -30,7 +30,7 @@ require_once('Controller/impuestos.controller.php');
         echo '<td>' . $impuesto['date'] . '</td>';
         echo '<td>' . $impuesto['proveedor'] . '</td>';
         echo '<td>' . $impuesto['precio'] . '</td>';
-        echo '<td>' . $impuesto['porcentaje'] . ' Kg</td>';
+        echo '<td>' . $impuesto['percent'] . ' Kg</td>';
         echo '<td>' . $impuesto['iva'] . ' €</td>';
         echo '</tr>';
       }
