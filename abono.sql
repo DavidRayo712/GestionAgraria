@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2022 a las 21:14:31
+-- Tiempo de generación: 06-05-2022 a las 20:48:29
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.28
 
@@ -20,6 +20,100 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `abono`
 --
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getimpuestos` (IN `consultfrom` DATE, IN `consultto` DATE)   BEGIN
+(
+    SELECT 
+    1 as type,
+    abo.id as ID,
+    abo.date as date,
+    pro.name as proveedor,
+    abo.precio as precio,
+    iv.value as percent,
+    abo.precio * iv.value / 100 as iva
+    FROM
+    proveedores pro INNER JOIN
+    abonos abo on pro.id = abo.proveedor INNER JOIN
+    iva iv on abo.iva = iv.id
+    WHERE
+    abo.date BETWEEN consultfrom and consultto
+)
+UNION
+(
+    SELECT 
+    2 as type,
+    com.id as ID,
+    com.date as date,
+    pro.name as proveedor,
+    com.precio as precio,
+    iv.value as percent,
+    com.precio * iv.value / 100 as iva
+    FROM
+    combustibles com  INNER JOIN
+    proveedores pro on com.proveedor = pro.id INNER JOIN 
+    iva iv on com.iva = iv.id
+    WHERE
+    com.date BETWEEN consultfrom and consultto
+)
+UNION
+(
+    SELECT 
+    3 as type,
+    elect.id as ID,
+    elect.date as date,
+    pro.name as proveedor,
+    elect.precio as precio,
+    iv.value as percent,
+    elect.precio * iv.value / 100 as iva
+    FROM
+    electricidad elect  INNER JOIN
+    proveedores pro on elect.proveedor = pro.id INNER JOIN 
+    iva iv on elect.iva = iv.id
+    WHERE
+    elect.date BETWEEN consultfrom and consultto
+)
+UNION
+(
+    SELECT 
+	 4 as type,
+    fit.id as ID,
+    fit.date as date,
+    pro.name as proveedor,
+    fit.precio as precio,
+    iv.value as percent,
+    fit.precio * iv.value / 100 as iva
+    FROM
+    proveedores pro INNER JOIN
+    fitosanitarios fit on pro.id = fit.proveedor INNER JOIN
+    iva iv on fit.iva = iv.id
+    WHERE
+    fit.date BETWEEN consultfrom and consultto
+)
+UNION
+(
+    SELECT 
+	5 as type,
+    man.id as ID,
+    man.date as date,
+    pro.name as proveedor,
+    man.precio as precio,
+    iv.value as percent,
+    man.precio * iv.value / 100 as iva
+    FROM
+    proveedores pro INNER JOIN
+    mantenimiento man on pro.id = man.proveedor INNER JOIN
+    iva iv on man.iva = iv.id
+    WHERE
+    man.date BETWEEN consultfrom and consultto
+)
+ORDER BY date;
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -42,10 +136,9 @@ CREATE TABLE `abonos` (
 --
 
 INSERT INTO `abonos` (`id`, `proveedor`, `producto`, `cantidad`, `precio`, `date`, `iva`) VALUES
-(22, 1, 'Nitrofoska', 2500, 2430.75, '2022-04-01', 0),
-(23, 2, 'Nitrofoska', 3000, 3100.15, '2022-04-02', 0),
-(24, 2, 'Abono 15-15-15', 9600, 12500.45, '2022-04-03', 0),
-(25, 1, '47', 1, 0.02, '2022-05-06', 1);
+(25, 1, '47', 1, 0.02, '2022-05-06', 1),
+(28, 2, 'test', 1, 0.01, '2022-05-05', 2),
+(29, 2, 'test', 1, 0.01, '2022-05-05', 2);
 
 -- --------------------------------------------------------
 
@@ -68,9 +161,8 @@ CREATE TABLE `combustibles` (
 --
 
 INSERT INTO `combustibles` (`id`, `proveedor`, `producto`, `cantidad`, `precio`, `date`, `iva`) VALUES
-(2, 1, 0, 50, 77, '2022-04-06', 0),
-(3, 1, 0, 1400, 1860, '2022-04-04', 0),
-(4, 1, 0, 120, 248.67, '2022-04-07', 0);
+(5, 2, 1, 1, 0.03, '2022-05-05', 1),
+(7, 1, 2, 1, 0.01, '2022-05-05', 1);
 
 -- --------------------------------------------------------
 
@@ -98,6 +190,13 @@ CREATE TABLE `electricidad` (
   `iva` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `electricidad`
+--
+
+INSERT INTO `electricidad` (`id`, `proveedor`, `contador`, `precio`, `date`, `iva`) VALUES
+(1, 1, 1, 10.4, '2022-05-05', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -109,7 +208,7 @@ CREATE TABLE `fitosanitarios` (
   `proveedor` int(11) NOT NULL,
   `producto` varchar(100) NOT NULL,
   `cantidad` float NOT NULL,
-  `precio` float(12,0) NOT NULL,
+  `precio` double NOT NULL,
   `date` date NOT NULL,
   `iva` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -119,8 +218,8 @@ CREATE TABLE `fitosanitarios` (
 --
 
 INSERT INTO `fitosanitarios` (`id`, `proveedor`, `producto`, `cantidad`, `precio`, `date`, `iva`) VALUES
-(12, 3, 'Monsanto', 500, 9801, '2022-04-04', 0),
-(13, 4, 'Roundup', 200, 3425, '2022-04-05', 0);
+(12, 3, 'Monsanto', 500, 9801, '2022-04-04', 1),
+(13, 4, 'Roundup', 200, 3425, '2022-04-05', 2);
 
 -- --------------------------------------------------------
 
@@ -157,6 +256,13 @@ CREATE TABLE `mantenimiento` (
   `iva` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `mantenimiento`
+--
+
+INSERT INTO `mantenimiento` (`id`, `date`, `proveedor`, `concepto`, `precio`, `iva`) VALUES
+(1, '2022-05-05', 1, '474747', 10.4, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -167,6 +273,14 @@ CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`id`, `name`) VALUES
+(1, 'producto 1'),
+(2, 'producto 2\r\n');
 
 -- --------------------------------------------------------
 
@@ -284,13 +398,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `abonos`
 --
 ALTER TABLE `abonos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `combustibles`
 --
 ALTER TABLE `combustibles`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `contador`
@@ -302,13 +416,13 @@ ALTER TABLE `contador`
 -- AUTO_INCREMENT de la tabla `electricidad`
 --
 ALTER TABLE `electricidad`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `fitosanitarios`
 --
 ALTER TABLE `fitosanitarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `iva`
@@ -320,13 +434,13 @@ ALTER TABLE `iva`
 -- AUTO_INCREMENT de la tabla `mantenimiento`
 --
 ALTER TABLE `mantenimiento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
