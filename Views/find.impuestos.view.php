@@ -25,6 +25,7 @@ require_once('Controller/impuestos.controller.php');
     </thead>
     <tbody>
       <?php
+      $countIvaAll = 0;
       foreach ($gridImpuestos as $impuesto) {
         echo '<tr>';
         echo '<td>' . $impuesto['date'] . '</td>';
@@ -33,8 +34,14 @@ require_once('Controller/impuestos.controller.php');
         echo '<td>' . $impuesto['percent'] . ' Kg</td>';
         echo '<td>' . $impuesto['iva'] . ' €</td>';
         echo '</tr>';
+        $countIvaAll += $impuesto['iva'];
       }
       ?>
     </tbody>
   </table>
+  <div>
+    <?php
+    echo 'Total   ' . $countIvaAll;
+    ?>
+  </div>
 </div>
