@@ -159,7 +159,8 @@
     <?php
     echo ("<script>" .
         "window.onload = function(){" .
-        "validSession()" .
+        "validSession();" .
+        "validTypeUser();" .
         "}" .
         "</script>"
     );

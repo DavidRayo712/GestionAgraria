@@ -35,9 +35,10 @@ function validTypeUser() {
     const elements = document.getElementsByClassName("functions-admin");
     const tagIva = document.getElementById("tag-iva");
     const tagProveedores = document.getElementById("tag-proveedores");
+    debugger
     if (typeUsert === "1") {
-        tagIva.classList.remove("d-none");
-        tagProveedores.classList.remove("d-none");
+        tagIva?.classList.remove("d-none");
+        tagProveedores?.classList.remove("d-none");
         for (let index = 0; index < elements.length; index++) {
             elements[index].classList.remove("d-none");
         }
@@ -48,4 +49,5 @@ function validTypeUser() {
 function closeSession() {
     localStorage.removeItem('typeUsert');
     localStorage.removeItem('idUsert');
+    localStorage.clear();
 }
