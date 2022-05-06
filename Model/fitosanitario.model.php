@@ -26,14 +26,9 @@ class Fitosanitario{
         return $retorno;
     }
     public function getProveedores(){
-        $query = $this->con->query('SELECT id, name FROM proveedores');
-        $retorno = [];
-        $i = 0;
-        while($fila = $query->fetch_assoc()){
-            $retorno[$i] = $fila;
-            $i++;
-        }
-        return $retorno;
+        require_once('Model/proveedor.model.php');
+        $proveedor = new Proveedor();
+        return $proveedor->getProveedores();
     }
     public  function register($id, $Proveedor, $producto, $Cantidad, $Precio, $date, $ivatype ){
 
