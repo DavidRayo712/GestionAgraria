@@ -1,3 +1,6 @@
+<?php
+require_once('Controller/mantenimiento.add.controller.php');
+?>
 <h2>Mantenimiento</h2>
 <div class="container2">
     <div class="container-agregar">
@@ -12,14 +15,14 @@
         </div>
 
         <div class="agregar">
-            <a href="index.php?add_mantenimiento=true">
+            <a href="index.php?action=add.mantenimiento">
                 <button type="submit">Agregar</button>
             </a>
         </div>
     </div>
 
     <div class="find-form">
-        <form method="post" action="index.php">
+        <form method="post" action="index.php?action=find.mantenimiento">
             <div class="title-action">
                 BUSCAR
             </div>
