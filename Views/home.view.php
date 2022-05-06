@@ -118,12 +118,26 @@
                 case 'register.fitosanitario':
                 case 'register.electricidad':
                 case 'register.mantenimiento':
+                case 'register.iva':
+                case 'add.proveedor':
                     require_once('Controller/abono.add.controller.php');
                     require_once('Controller/fitosanitario.add.controller.php');
                     require_once('Controller/combustible.add.controller.php');
                     require_once('Controller/electricidad.add.controller.php');
                     require_once('Controller/mantenimiento.add.controller.php');
+                    require_once('Controller/proveedor.controller.php');
+                    require_once('Controller/iva.controller.php');
+
                     require_once('Views/selection.view.php');
+                    break;
+                case 'iva':
+                    require_once("Views/iva.view.php");
+                    break;
+                case 'edit.iva':
+                    require_once("Views/add.iva.view.php");
+                    break;
+                case 'proveedor':
+                    require_once("Views/proveedor.view.php");
                     break;
                 default:
                     require_once('Views/selection.view.php');

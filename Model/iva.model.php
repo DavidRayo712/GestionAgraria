@@ -20,16 +20,20 @@ class Iva{
         }
         return $retorno;
     }
-    public  function register($Proveedor, $producto, $Cantidad, $Precio, $date ){
-        $datetime = new DateTime($date);
-        
-        $text  = "INSERT INTO abonos(proveedor, producto, cantidad, precio, date) VALUES (".
-        $Proveedor .", ".
-        "'". $producto ."', ".
-        $Cantidad .", ".
-        $Precio .", ".
-        "'". $datetime->format(DateTime::ATOM) ."')";        
-        $query = $this->con->query($text);
+    public  function register($id, $value, $name ){
+        if ($id == 0) {
+            $text  = "INSERT INTO iva(value, name) VALUES (".
+            $value .", ".
+            "'".$name ."') ";        
+            $query = $this->con->query($text);
+        } else {
+            $text  = "UPDATE iva SET ".
+            " value = ". $value .", ".
+            " name = '". $name ."'".
+            ' WHERE '.
+            'id = '. $id;
+            $query = $this->con->query($text);
+        }
     }
 }
 
