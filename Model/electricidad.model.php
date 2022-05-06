@@ -69,7 +69,7 @@ class Electricidad{
         }
         
     }
-    public  function delete($id){//revisar
+    public  function delete($id){
             $text  = "DELETE FROM electricidad WHERE  id = ". $id;
             $query = $this->con->query($text);
         
