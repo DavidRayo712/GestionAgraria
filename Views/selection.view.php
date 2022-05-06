@@ -25,5 +25,12 @@
             <a href="index.php?action=impuestos"><img src="img/tasas.png" alt="impuestos"></a>
 
         </div>
+        <div class="uno" id="tag-iva">
+            <a href="index.php?action=iva"><img src="img/tasas.png" alt="Tipos de IVA"></a>
+
+        </div>
+        <div class="uno" id="tag-proveedores">
+            <a href="index.php?action=proveedor"><img src="img/tasas.png" alt="Proveedores"></a>
+        </div>
     </div>
 </div>

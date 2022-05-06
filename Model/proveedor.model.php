@@ -20,16 +20,8 @@ class Proveedor{
         return $retorno;
     }
     public  function register($name ){
-
-            // $text  = "INSERT INTO combustibles(proveedor, producto, cantidad, precio, iva, date) VALUES (".
-            // $Proveedor .", ".
-            // "'". $producto ."', ".
-            // $Cantidad .", ".
-            // $Precio .", ".
-            // $ivatype .", ".
-            // "'". $datetime->format(DateTime::ATOM) ."')";        
-            // $query = $this->con->query($text);
-       
-        
+            $text  = "INSERT INTO proveedores(name) VALUES (".
+            "'". $name ."') " ;        
+            $query = $this->con->query($text);
     }
 }
